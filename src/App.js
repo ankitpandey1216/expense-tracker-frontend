@@ -1,24 +1,32 @@
 import logo from './logo.svg';
+import './ColorPicker';
 import './App.css';
+import WelcomePage from './componenets/WelcomePage';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import AppLayout from './componenets/AppLayout';
+import SignupPage from './componenets/SignupPage';
+import LoginPage from './componenets/LoginPage';
+import Dashboard from './componenets/dashboard/Dashboard';
+import GroupPage from './componenets/groups/GroupPage';
+import GroupDetail from './componenets/groups/GroupDetail';
+import ProtectedRoute from './componenets/ProtectedRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<WelcomePage />} />
+          <Route path='/signup' element={<SignupPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} >
+          </Route>
+          <Route path='groups' element={<ProtectedRoute><GroupPage /></ProtectedRoute>} >
+          </Route>
+        </Route>
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
