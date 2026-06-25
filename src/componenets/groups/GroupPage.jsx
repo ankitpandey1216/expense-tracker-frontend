@@ -51,10 +51,10 @@ export default function GroupPage() {
         try {
             const data = { ...groupData };
             data.createdBy = userId;
-            await groupApi.post("", data);
+            const response =await groupApi.post("", data);
             setGroups((prev) => ([
                 ...prev,
-                response.data
+                response?.data
             ]))
             setGroupData({});
             closeAddGroupModal();

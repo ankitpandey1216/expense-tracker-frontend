@@ -10,7 +10,9 @@ export const registerUser = async (user) => {
             body: JSON.stringify(user)
         });
 
-        return await response.json();
+        if(respone?.ok){
+            return await response.json();
+        }
     } catch (error) {
         console.error("Error registering user:", error);
         throw error;
@@ -26,7 +28,7 @@ export const loginUser = async (credentials) => {
             },
             body: JSON.stringify(credentials)
         });
-        if (response.ok) {
+        if (response?.ok) {
             return await response.json();
         }
     } catch (error) {
