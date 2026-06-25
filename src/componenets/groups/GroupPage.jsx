@@ -1,4 +1,3 @@
-import { Form, Link, Outlet } from "react-router-dom";
 import "../../styles/groupPage.css";
 import plusIcon from "../../images/plus.svg";
 import { useContext, useEffect, useState } from "react";
@@ -13,8 +12,6 @@ import ModalComponent from "../common/ModalComponent";
 export default function GroupPage() {
     const [groups, setGroups] = useState([]);
     const [openGroupAddForm, setOpenGroupAddForm] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const [groupData, setGroupData] = useState({
         groupTitle: "",
         createdBy: ""
@@ -54,7 +51,7 @@ export default function GroupPage() {
         try {
             const data = { ...groupData };
             data.createdBy = userId;
-            const response = await groupApi.post("", data);
+            await groupApi.post("", data);
             setGroups((prev) => ([
                 ...prev,
                 response.data
@@ -62,7 +59,6 @@ export default function GroupPage() {
             setGroupData({});
             closeAddGroupModal();
         } catch (error) {
-            console.log("Erorr while adding group");
         }
     }
 
@@ -76,14 +72,9 @@ export default function GroupPage() {
         if (groupId) {
             setSelectedGroup(groupId);
             try {
-                setError(null);
-                setLoading(true);
                 const response = await groupApi.get(`/${groupId}`);
                 setGroupDetail(response.data);
             } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
             }
 
         }
@@ -92,35 +83,20 @@ export default function GroupPage() {
     // api to add memebers to a group
     const addMembersToGroup = async (memeberIds) => {
         try {
-            setLoading(true);
-            setError(null);
-            const response = await groupMemberApi.post(`/${selectGroup}/members`, {
+            await groupMemberApi.post(`/${selectGroup}/members`, {
                 userIds: memeberIds
             });
             await showGroupDetail(selectGroup);
 
         } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
         }
     }
-
-    // api to get all the expenses of a group
-    const getGroupExpense = async (grouId) => {
-
-    }
-
 
     // api for adding expense to group
     const addExpense = async (expenseData) => {
         try {
-            setLoading(true);
-            setError(null);
-            const response = await addGroupExpense(selectGroup, expenseData);
-            console.log("Response after adding the expense is ", response);
+            await addGroupExpense(selectGroup, expenseData);
         } catch (error) {
-            setError(null);
         }
     }
 

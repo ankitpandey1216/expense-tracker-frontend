@@ -1,14 +1,12 @@
-import logo from './logo.svg';
 import './ColorPicker';
 import './App.css';
 import WelcomePage from './componenets/WelcomePage';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppLayout from './componenets/AppLayout';
 import SignupPage from './componenets/SignupPage';
 import LoginPage from './componenets/LoginPage';
 import Dashboard from './componenets/dashboard/Dashboard';
 import GroupPage from './componenets/groups/GroupPage';
-import GroupDetail from './componenets/groups/GroupDetail';
 import ProtectedRoute from './componenets/ProtectedRoute';
 
 function App() {

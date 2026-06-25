@@ -1,7 +1,6 @@
 import AddMember from "./AddMember";
 
 export default function GroupMembers({ members=[], ownerId, handleAddMember }) {
-  console.log("Members: ",members);
   return (
     <section className="group-detail-section">
       <div style={{display: "flex",justifyContent: "space-between"}}>

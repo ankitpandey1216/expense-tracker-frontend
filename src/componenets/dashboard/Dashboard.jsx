@@ -6,23 +6,15 @@ import { useEffect, useState } from "react";
 import { dashBoardApi } from "../../services/dashboardSerive";
 
 export default function Dashboard() {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const [dashboardData, setDashboardData] = useState(null);
 
 
     useEffect(() => {
         const fetchDashboardData = async () => {
             try {
-                setLoading(true);
-                setError(null);
                 const response = await dashBoardApi();
-                console.log("Inside dashboard comp response : ",response);
                 setDashboardData(response?.data);
             } catch (error) {
-                setError(error);
-            } finally{
-                setLoading(false);
             }
         }
         fetchDashboardData();

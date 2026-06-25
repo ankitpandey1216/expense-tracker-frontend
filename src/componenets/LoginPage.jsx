@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import {jwtDecode} from "jwt-decode";
 import { loginUser } from "../services/userService";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [userData, setUserData] = useState({
@@ -13,7 +13,7 @@ export default function LoginPage() {
     password: ""
   })
 
-  const {login, logout} = useContext(AuthContext);
+  const {login} = useContext(AuthContext);
   const navigate = useNavigate();
 
 
@@ -32,18 +32,13 @@ export default function LoginPage() {
       return;
     }else{
       const response = await loginUser(userData);
-      console.log("user login done before : ",response);
       if(response && response.token){
         const token = response.token;
         const decodedData = jwtDecode(token);
-        console.log("decoded data : ",decodedData);
         login(decodedData.userId, token);
         navigate("/dashboard");
         alert("Login successful!");
       }
-      // const responseData = jwtDecode(response.token);
-      // console.log("user login done data : ",responseData);
-      
     }
   }
   // if(login){

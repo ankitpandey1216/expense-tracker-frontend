@@ -1,4 +1,4 @@
-import { Children, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { isExpired } from "../utilities/GeneralUtilities";
 
 export const AuthContext = createContext();

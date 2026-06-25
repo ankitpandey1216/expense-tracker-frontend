@@ -19,7 +19,6 @@ export default function AppLayout() {
 
     const handleLogoutClick = () => {
         logout();
-        console.log("Logged out successfully");
         navigate("/");
     }
 

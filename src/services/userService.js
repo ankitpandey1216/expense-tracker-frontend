@@ -26,7 +26,6 @@ export const loginUser = async (credentials) => {
             },
             body: JSON.stringify(credentials)
         });
-        console.log("response from register user : ", response);
         if (response.ok) {
             return await response.json();
         }

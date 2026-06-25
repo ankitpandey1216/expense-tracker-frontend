@@ -15,7 +15,6 @@ expenseApi.interceptors.request.use((config) => {
 
 
 export const addGroupExpense = async (groupId,expenseData) => {
-    console.log("Selected id is ",groupId);
     try {
         const response = await expenseApi.post(`/${groupId}/expense`,expenseData);
         return response;

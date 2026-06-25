@@ -94,11 +94,8 @@ export default function SignupPage() {
             return;
         }
 
-        // ✅ success case
-        console.log("Form submitted successfully:", userData);
-
         const {confirmPassword, ...payload} = userData;
-        const response = await registerUser(payload);
+        await registerUser(payload);
         
         alert("Registration successful!");
 

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import useDebounce from "../../customHooks/useDebounce";
 import { userApi } from "../../services/userService";
-import { groupMemberApi } from "../../services/groupMemberService";
 
 export default function AddMember({ ownerId, exitingMembers, handleAddMember }) {
     const [memberName, setMemberName] = useState("");
@@ -37,7 +36,6 @@ export default function AddMember({ ownerId, exitingMembers, handleAddMember }) 
                 setLoading(true);
                 setError(null);
                 const response = await userApi.get(`/search?query=${debouncedValue}`);
-                console.log("Response for searching member is ", response);
                 setSuggestedMember(response?.data);
             } catch (error) {
                 setError(error);
@@ -66,7 +64,7 @@ export default function AddMember({ ownerId, exitingMembers, handleAddMember }) 
     const members = useMemo(() => {
         const alreadyMembers = new Set(exitingMembers.map(member => member.userId));
         return suggestedMember.filter((member) => !alreadyMembers.has(member.userId));
-    }, [suggestedMember])
+    }, [exitingMembers, suggestedMember])
 
     return (
         <div className="add-member">

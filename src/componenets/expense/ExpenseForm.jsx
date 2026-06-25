@@ -19,7 +19,6 @@ export default function ExpenseForm({ members, ownerId, addExpense, onClose }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log("handle change called name : ", name);
         setExpenseData((prev) => {
             if (name === "splitType") {
                 return {
@@ -87,7 +86,6 @@ export default function ExpenseForm({ members, ownerId, addExpense, onClose }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Inside handleSubmit: data ", expenseData);
         const data = structuredClone(expenseData);
         data["amount"] = Number(data["amount"]);
         if (data.splitType === "CUSTOM") {
@@ -102,16 +100,13 @@ export default function ExpenseForm({ members, ownerId, addExpense, onClose }) {
                 onClose();
             } else {
                 alert("Data for expense is not valid please check");
-                console.log("Error in adding custom split");
             }
         } else if (data.splitType === "EQUAL") {
             if (validateData(data)) {
-                console.log("Data is : ", data);
                 addExpense(data);
                 onClose();
             } else {
                 alert("Data for expense is not valid please check");
-                console.log("Error in adding custom split");
             }
         }
 
@@ -119,7 +114,6 @@ export default function ExpenseForm({ members, ownerId, addExpense, onClose }) {
     }
 
     const validateData = (expense) => {
-        console.log("Inside validate data ; ", expense);
         if (expense.amount < 0 || !expense.description) {
             return false;
         }
@@ -130,7 +124,6 @@ export default function ExpenseForm({ members, ownerId, addExpense, onClose }) {
                 return false;
             }
             if (keys.length > members.length) {
-                console.log("More members in split than group");
                 return false;
             }
             const values = Object.values(expense.customSplits);

@@ -1,5 +1,4 @@
 export default function GroupBalances({ balances }) {
-  console.log("Inside balance : ",balances);
   return (
     <section className="group-detail-section">
       <h2>Balances</h2>
