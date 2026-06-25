@@ -10,7 +10,7 @@ export const registerUser = async (user) => {
             body: JSON.stringify(user)
         });
 
-        if(respone?.ok){
+        if(response?.ok){
             return await response.json();
         }
     } catch (error) {
