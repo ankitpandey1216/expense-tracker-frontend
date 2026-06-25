@@ -138,7 +138,7 @@ export default function GroupPage() {
                 }
 
                 <div className="group-list">
-                    {groups.map((group) => (
+                    {Array.isArray(groups) && groups.map((group) => (
                         <li className="group-card" key={group.groupId} onClick={() => showGroupDetail(group.groupId)} style={{ border: group.groupId === selectGroup ? "1.5px solid blue" : null }}>
                             <div className="group-info">
                                 <h2 className="group-title">{group.groupTitle}</h2>

@@ -38,7 +38,7 @@ export default function GroupBalance({groupBalances=[]}) {
             </div>
 
             <div className="group-balance-list">
-                {groupBalances.map((balance) => (
+                {Array.isArray(groupBalances) && groupBalances.map((balance) => (
                     <article className="group-balance-card" key={balance?.groupId}>
                         <div className="group-balance-heading">
                             <div className="group-balance-avatar">

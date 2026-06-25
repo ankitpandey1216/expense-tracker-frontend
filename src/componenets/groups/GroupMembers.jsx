@@ -8,7 +8,7 @@ export default function GroupMembers({ members=[], ownerId, handleAddMember }) {
       </div>
 
       <div className="member-list">
-        {members.map((member) => (
+        {Array.isArray(members) && members.map((member) => (
           <div className="member-chip" key={member.userId}>
             <span className="member-avatar">{member.userName.charAt(0)}</span>
             <span>{member.userId === ownerId ? "You" : member?.userName}</span>

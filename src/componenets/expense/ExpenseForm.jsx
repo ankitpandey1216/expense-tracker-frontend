@@ -171,7 +171,7 @@ export default function ExpenseForm({ members, ownerId, addExpense, onClose }) {
 
             <div className="expense-member-list">
                 {
-                    members.map((member) => {
+                    Array.isArray(members) && members.map((member) => {
                         if (expenseData.splitType === "CUSTOM" && ownerId === member.userId) {
                             return null;
                         }

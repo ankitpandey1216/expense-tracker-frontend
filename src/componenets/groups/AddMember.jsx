@@ -62,7 +62,7 @@ export default function AddMember({ ownerId, exitingMembers, handleAddMember }) 
     }
 
     const members = useMemo(() => {
-        const alreadyMembers = new Set(exitingMembers.map(member => member.userId));
+        const alreadyMembers = new Set(Array.isArray(exitingMembers) && exitingMembers.map(member => member.userId));
         return suggestedMember.filter((member) => !alreadyMembers.has(member.userId));
     }, [exitingMembers, suggestedMember])
 
@@ -85,7 +85,7 @@ export default function AddMember({ ownerId, exitingMembers, handleAddMember }) 
             {(!loading && !error && members.length > 0) && (
                 <ul className="add-member-suggestion-container">
                     {
-                        members.map((member) => {
+                       Array.isArray(members) && members.map((member) => {
                             return (
                                 <li className="add-member-suggestion" key={member?.userId}>
                                     <span>

@@ -4,7 +4,7 @@ export default function GroupBalances({ balances }) {
       <h2>Balances</h2>
 
       <div className="balance-list">
-        {balances?.youOwe.map((balance) => (
+        {Array.isArray(balances?.youOwe) && balances?.youOwe.map((balance) => (
           <div className="balance-row" key={balance?.userName}>
             <div>
               <p className="balance-status">You Owe</p>
@@ -17,7 +17,7 @@ export default function GroupBalances({ balances }) {
             </span>
           </div>
         ))}
-        {balances?.youAreOwed.map((balance) => (
+        {Array.isArray(balances?.youAreOwed) && balances?.youAreOwed.map((balance) => (
           <div className="balance-row" key={balance?.userName}>
             <div>
               
