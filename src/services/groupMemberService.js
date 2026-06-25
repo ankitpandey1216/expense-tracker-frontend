@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const groupMemberApi = axios.create({
-    baseURL: "expense-tracker-backend-production-60cd.up.railway.app/group",
+    baseURL: "https://expense-tracker-backend-production-60cd.up.railway.app/group",
     timeout: 5000
 });
 

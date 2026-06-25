@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const dashboardService = axios.create({
-    baseURL: "expense-tracker-backend-production-60cd.up.railway.app/dashboard",
+    baseURL: "https://expense-tracker-backend-production-60cd.up.railway.app/dashboard",
     timeout: 5000
 })
 
