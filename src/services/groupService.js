@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const groupApi = axios.create({
-    baseURL: "http://localhost:8080/groups",
+    baseURL: "expense-tracker-backend-production-60cd.up.railway.app/groups",
     timeout: 5000
 })
 
