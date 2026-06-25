@@ -1,8 +1,9 @@
 import axios from "axios";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const registerUser = async (user) => {
     try {
-        const response = await fetch("https://expense-tracker-backend-production-60cd.up.railway.app/users/register", {
+        const response = await fetch(`${BASE_URL}/users/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -21,7 +22,7 @@ export const registerUser = async (user) => {
 
 export const loginUser = async (credentials) => {
     try {
-        const response = await fetch("https://expense-tracker-backend-production-60cd.up.railway.app/users/login", {
+        const response = await fetch(`${BASE_URL}/users/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -38,7 +39,7 @@ export const loginUser = async (credentials) => {
 }
 
 export const userApi = axios.create({
-    baseURL: "https://expense-tracker-backend-production-60cd.up.railway.app/users",
+    baseURL: `${BASE_URL}/users`,
     timeout: 5000
 })
 

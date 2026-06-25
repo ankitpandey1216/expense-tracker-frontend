@@ -1,7 +1,8 @@
 import axios from "axios";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const groupMemberApi = axios.create({
-    baseURL: "https://expense-tracker-backend-production-60cd.up.railway.app/group",
+    baseURL: `${BASE_URL}/group`,
     timeout: 5000
 });
 

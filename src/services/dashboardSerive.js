@@ -1,7 +1,8 @@
 import axios from "axios";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const dashboardService = axios.create({
-    baseURL: "https://expense-tracker-backend-production-60cd.up.railway.app/dashboard",
+    baseURL: `${BASE_URL}/dashboard`,
     timeout: 5000
 })
 
